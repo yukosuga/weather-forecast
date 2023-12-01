@@ -12,7 +12,7 @@ const city = document.querySelector(".city");
 const desc = document.querySelector(".desc");
 const temp = document.querySelector("temp");
 
-const weatherForecast = (e) => {  
+const weatherForecast = (e) => {
   e.preventDefault();
   error.textContent = "";
   error.classList.add("hidden");
@@ -20,6 +20,7 @@ const weatherForecast = (e) => {
   if (input.value === "") {
     error.classList.remove("hidden");
     error.textContent = "City not found... Please check the name of the city";
+    container.textContent = "";
     return;
   }
 
@@ -44,22 +45,21 @@ const weatherForecast = (e) => {
     });
 };
 
-weatherData = ({ location, current }) => {
+weatherData = ({location, current}) => {
+  if (container.children.length > 0) {
+    container.innerHTML = "";
+  }
 
-    if (container.children.length > 0) {
-        container.innerHTML = ""
-    }
+  const iconUrl = `https:${current.condition.icon}`;
 
-    const iconUrl = `https:${current.condition.icon}`;
-
-    element.innerHTML = `
+  element.innerHTML = `
     <h2>${location.name}</h2>
     <img src="${iconUrl}"/>
     <p>${current.temp_c}℃ / ${current.humidity}%</p>
     <p>${current.condition.text}</p>
-`
+`;
 
-container.appendChild(element);
+  container.appendChild(element);
 };
 
 button.addEventListener("click", weatherForecast);
