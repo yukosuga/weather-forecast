@@ -1,5 +1,5 @@
 # 🌈 Weather Forecast 
-## Mini Application for API Fetch in JavaScript Practice
+## Mini Application for API Fetch / DOM Practice
 
 
 ### Tools I used
